@@ -1,0 +1,34 @@
+{% extends "accounts/base_userinfo.html" %}
+{% load static %}
+{% block title %}{{ user }}'s information{% endblock %}
+
+{% block active_information_tab %}active{% endblock %}
+
+{% block body_middle_userinfo %}
+    <div class="card">
+        <div class="card-body">
+            Username: {{ user }}
+        </div>
+    </div>
+    {% if user.email %}
+        <div class="card">
+            <div class="card-body">
+                Email: {{ user.email }}
+            </div>
+        </div>
+    {% endif %}
+    {% if user.first_name %}
+        <div class="card">
+            <div class="card-body">
+                First name: {{ user.first_name }}
+            </div>
+        </div>
+    {% endif %}
+    {% if user.last_name %}
+        <div class="card">
+        <div class="card-body">
+            Last name: {{ user.last_name }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

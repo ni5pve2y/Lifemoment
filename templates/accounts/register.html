@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block title %}Register{% endblock %}
+
+{% block body_middle %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <hr>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </form>
+{% endblock %}

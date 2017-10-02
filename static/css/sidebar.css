@@ -1,0 +1,11 @@
+#sidebar_left {
+  height:100%;
+  /*position:fixed;*/
+  right:0;
+}
+
+#sidebar_right {
+  height:100%;
+  position:fixed;
+  right:0;
+}

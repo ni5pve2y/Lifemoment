@@ -1,0 +1,25 @@
+{% extends "accounts/base_userinfo.html" %}
+{% load static %}
+{% block title %}{{ user }}'s friends{% endblock %}
+
+{% block active_friends_tab %}active{% endblock %}
+
+{% block body_middle_userinfo %}
+    {% if friends %}
+        <div class="row">
+            {% for friend in friends %}
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3><a href="{% url 'accounts:profile' friend %}">{{ friend }}</a></h3>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-primary" role="alert" style="text-align: center">
+            User has no friends yet!
+        </div>
+    {% endif %}
+{% endblock %}

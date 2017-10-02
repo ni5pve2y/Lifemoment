@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block title %}{{ post }}{% endblock %}
+
+{% block body_middle %}
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ post.title }}
+                <small>, by {{ post.user }}</small>
+            </h3>
+            <p class="card-text" style="text-align: justify;">{{ post.context }}</p>
+        </div>
+        {% if post.image %}
+            <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+        {% endif %}
+    </div>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary btn-block">Add comment</button>
+    </form>
+    <hr>
+    <br>
+    <h2>Comments:</h2>
+    {% if comments %}
+            <br>
+        {% for comment in comments %}
+            <a href="{% url 'accounts:profile' comment.user %}">{{ comment.user }}</a>
+            <small>&nbsp;at {{ comment.timestamp }}</small>
+            <br>
+            {{ comment }}
+            <hr>
+        {% endfor %}
+    {% else %}
+        <hr>
+        <p>No comments yet.</p>
+    {% endif %}
+{% endblock %}

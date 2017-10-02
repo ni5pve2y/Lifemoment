@@ -1,0 +1,30 @@
+{% extends "accounts/base_userinfo.html" %}
+{% load static %}
+{% block title %}{{ user }}{% endblock %}
+
+{% block active_posts_tab %}active{% endblock %}
+
+{% block body_middle_userinfo %}
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        {{ post.title|truncatechars:30 }},
+                        <small>by {{ post.user }}</small>
+                    </h3>
+                    <p class="card-text" style="text-align: justify;">{{ post.context|truncatechars:470 }}</p>
+                </div>
+                {% if post.image %}
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+                {% endif %}
+                <a href="{% url 'posts:post_detail' post.slug %}" class="btn btn-primary">Read, comment and more...</a>
+            </div>
+            <br><br>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-primary" role="alert" style="text-align: center">
+            User has not posted anything yet!
+        </div>
+    {% endif %}
+{% endblock %}

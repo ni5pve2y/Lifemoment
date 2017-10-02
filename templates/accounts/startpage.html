@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Lifemoment</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
+<body style="margin-top: 50px;">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="{% url 'startpage' %}">Lifemoment</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Hello!</h1>
+        <p style="text-align: justify">
+
+            In sed mi in libero porta tristique. Suspendisse pellentesque lectus lectus, non vulputate risus finibus at.
+            Vivamus ultricies lacus a libero consequat scelerisque. Quisque sit amet faucibus quam. Donec auctor justo
+            orci, vel ornare erat tincidunt non. Mauris ultricies ligula nunc, eget consectetur eros mollis in.
+            Vestibulum nec dolor quis nisi tincidunt ornare et in dolor. Nam a scelerisque nibh, eu consequat nisl.
+            Integer malesuada blandit tortor sed iaculis.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p style="text-align: justify">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
+                cursus commodo, tortor mauris
+                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+                euismod. Donec sed odio dui. </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Information</h2>
+            <p style="text-align: justify">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
+                cursus commodo, tortor mauris
+                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+                euismod. Donec sed odio dui. </p>
+        </div>
+        <div class="col-md-4">
+            <h2>And more</h2>
+            <p style="text-align: justify">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget
+                quam. Vestibulum id ligula
+                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus.</p>
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <p>&copy; Lifemoment 2017</p>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+</body>
+</html>

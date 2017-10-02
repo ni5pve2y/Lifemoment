@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Posts{% endblock %}
+
+{% block body_middle %}
+        <div class="card text-center">
+            <div class="card-header">
+                Lifemoment
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Create your own posts!</h4>
+                <p class="card-text">Hi {{ user }}. You can share your thoughts with friends by making posts.</p>
+                <a href="{% url 'posts:post_create' %}" class="btn btn-primary btn-lg">Make post</a>
+            </div>
+        </div>
+        <br><br>
+
+        {% for post in posts %}
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        {{ post.title|truncatechars:30 }},
+                        <small>by {{ post.user }}</small>
+                    </h3>
+                    <p class="card-text" style="text-align: justify;">{{ post.context|truncatechars:470 }}</p>
+                </div>
+                {% if post.image %}
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+                {% endif %}
+                <a href="{% url 'posts:post_detail' post.slug %}" class="btn btn-primary">Read, comment and more...</a>
+            </div>
+            <br>
+            <br>
+        {% endfor %}
+{% endblock %}
