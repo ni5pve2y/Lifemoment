@@ -47,7 +47,7 @@ def add_friend(request, current_user, new_friend):
     user = get_object_or_404(User, username=current_user)
     friend = get_object_or_404(User, username=new_friend)
     Friend.add_friend(current_user=user, new_friend=friend)
-    return redirect('posts:post_list')
+    return redirect('accounts:friends', current_user=request.user)
 
 
 def settings(request, current_user):

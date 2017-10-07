@@ -24,16 +24,53 @@
     <br>
     <h2>Comments:</h2>
     {% if comments %}
-            <br>
+        <br>
         {% for comment in comments %}
             <a href="{% url 'accounts:profile' comment.user %}">{{ comment.user }}</a>
-            <small>&nbsp;at {{ comment.timestamp }}</small>
+            <small>&nbsp;at {{ comment.timestamp }}&nbsp;</small>
+            <button onclick="myFunction({{ comment.id }})" class="btn btn-sm btn-outline-primary">More ...</button>
+
             <br>
             {{ comment }}
+            <br>
+
+            <div id="{{ comment.id }}" style="display: none">
+                <br>
+                <a href="" class="btn btn-sm btn-primary" style="text-align: right">Reply</a>
+                {% if request.user == comment.user %}
+                    <a href="" class="btn btn-sm btn-info" style="text-align: right">Edit comment</a>
+                {% endif %}
+                {% if request.user == comment.user or request.user == post.user %}
+                    <a href="{% url 'posts:comment_delete' post.slug comment.id %}" class="btn btn-sm btn-danger"
+                       style="text-align: right">Remove</a>
+                {% endif %}
+            </div>
             <hr>
         {% endfor %}
     {% else %}
         <hr>
         <p>No comments yet.</p>
     {% endif %}
+
+    {% if is_post_owner %}
+        <br>
+        <h2>Post settings:</h2>
+        <br>
+        <a href="{% url 'posts:post_edit' post.slug %}" class="btn btn-info">Edit post</a>
+        <a href="{% url 'posts:post_delete' post.slug %}" class="btn btn-danger">Delete post</a>
+        <br>
+        <br>
+    {% endif %}
+
+    <script>
+        function myFunction(divName) {
+            var x = document.getElementById(divName);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
 {% endblock %}

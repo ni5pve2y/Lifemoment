@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
     url(r'^edit/(?P<slug>[-\w]+)/$', views.post_edit, name='post_edit'),
     url(r'^remove/(?P<slug>[-\w]+)/$', views.post_delete, name='post_delete'),
+
+    url(r'^(?P<post_slug>[-\w]+)/remove-comment/(?P<id>[-\w]+)/$', views.comment_delete, name='comment_delete'),
 ]

@@ -5,6 +5,10 @@
 {% block active_friends_tab %}active{% endblock %}
 
 {% block body_middle_userinfo %}
+    {% if not request.user in friends and not request.user == user %}
+        <a class="btn btn-block btn-primary" href="{% url 'accounts:add_friend' request.user user %}">Send a friend request</a>
+        <br>
+    {% endif %}
     {% if friends %}
         <div class="row">
             {% for friend in friends %}

@@ -19,3 +19,7 @@ class CreateCommentForm(forms.ModelForm):
         fields = (
             'context',
         )
+
+
+class SearchForm(forms.Form):
+    title = forms.CharField(max_length=150)

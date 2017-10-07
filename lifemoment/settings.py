@@ -15,11 +15,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # MY APPS
+
+    # Project apps
     'accounts',
     'communication',
     'posts',
-    # THIRD PARTY APPS
+
+    # Third party apps
+    'channels',
     'crispy_forms',
 ]
 
@@ -31,7 +34,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # MY MIDDLEWARE
+
+    # Project middleware
     'accounts.middleware.LoginRequiredMiddleware',
 ]
 
@@ -87,7 +91,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 MEDIA_URL = '/media/'
@@ -109,9 +113,12 @@ EMAIL_PORT = 1025
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "communication.routing.channel_routing",
-    },
-}
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "asgi_redis.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [('localhost', 6379)],
+#         },
+#         "ROUTING": "communication.routing.channel_routing",
+#     },
+# }

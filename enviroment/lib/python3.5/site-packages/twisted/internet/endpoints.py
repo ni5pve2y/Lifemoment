@@ -549,7 +549,7 @@ class TCP4ClientEndpoint(object):
 
         @param timeout: The number of seconds to wait before assuming the
             connection has failed.
-        @type timeout: int
+        @type timeout: L{float} or L{int}
 
         @param bindAddress: A (host, port) tuple of local address to bind to,
             or None.
@@ -769,7 +769,7 @@ class HostnameEndpoint(object):
 
         @param timeout: For each individual connection attempt, the number of
             seconds to wait before assuming the connection has failed.
-        @type timeout: L{int}
+        @type timeout: L{float} or L{int}
 
         @param bindAddress: the local address of the network interface to make
             the connections from.
@@ -1354,7 +1354,8 @@ def _parseSSL(factory, port, privateKey="server.pem", certKey=None,
         kw['method'] = getattr(ssl.SSL, sslmethod)
     certPEM = FilePath(certKey).getContent()
     keyPEM = FilePath(privateKey).getContent()
-    privateCertificate = ssl.PrivateCertificate.loadPEM(certPEM + keyPEM)
+    privateCertificate = ssl.PrivateCertificate.loadPEM(
+        certPEM + b'\n' + keyPEM)
     if extraCertChain is not None:
         matches = re.findall(
             r'(-----BEGIN CERTIFICATE-----\n.+?\n-----END CERTIFICATE-----)',
